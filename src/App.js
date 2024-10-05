@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { LanguageProvider } from './context/LanguageContext';
+import Navbar from './Components/Navbar';
+import Footer from './Components/Footer';
+import HomePage from './Pages/HomePage';
+import About from './Pages/About';
+import ThirukkuralSectionsPage from './Pages/ThirukkuralSections';
+
+const AppRoutes = () => {
+  const location = useLocation(); // Get the current location
+
+  return (
+    <div className="App flex flex-col min-h-screen">
+      <Navbar />
+      
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+
+        {/* Render ThirukkuralSectionsPage only on the home page */}
+        {location.pathname === '/' && <ThirukkuralSectionsPage />}
+      </main>
+
+      <Footer />
+    </div>
+  );
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <LanguageProvider>
+        <AppRoutes />
+      </LanguageProvider>
+    </Router>
   );
 }
 
