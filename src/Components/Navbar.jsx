@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
-import { Menu } from 'lucide-react';
+import { Menu, ChevronDown } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isSectionsOpen, setIsSectionsOpen] = useState(false);
   const [currentDateTime, setCurrentDateTime] = useState('');
   const { language, toggleLanguage } = useLanguage();
-  
+
   const location = useLocation();
-  
+
   const content = {
     en: {
       marqueeText: 'Welcome to the Tamil Virtual Academy - Your digital library for Tamil literature and culture!',
@@ -23,6 +24,10 @@ const Navbar = () => {
       emailAddress: 'xyz@gmail.com',
       phone: 'Phone:',
       phoneNumber: '+91-1234567890',
+      sections: 'Sections',
+      section1: 'Aram',
+      section2: 'Porul',
+      section3: 'Inbam',
     },
     ta: {
       marqueeText: 'தமிழிணையம் - தமிழ்ப் புத்தகங்கள் மற்றும் கலாச்சாரத்திற்கு உங்களை வரவேற்கிறேன்!',
@@ -36,6 +41,10 @@ const Navbar = () => {
       emailAddress: 'xyz@gmail.com',
       phone: 'தொலைபேசி:',
       phoneNumber: '+91-1234567890',
+      sections: 'பிரிவுகள்',
+      section1: 'அறம்',
+      section2: 'பொருள்',
+      section3: 'இன்பம்',
     }
   };
 
@@ -106,7 +115,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      <nav className="bg-white text-black">
+      <nav className="bg-white text-black relative">
         <div className="container mx-auto px-4">
           <div className="flex justify-center items-center py-2">
             <button
@@ -132,6 +141,18 @@ const Navbar = () => {
                   </Link>
                 </li>
               ))}
+              <li className="relative group">
+                <button
+                  className="flex items-center py-2 px-4 hover:bg-[#aec6fa] text-center sm:text-left font-mukta"
+                >
+                  {t.sections} <ChevronDown size={16} className="ml-1" />
+                </button>
+                <div className="hidden group-hover:block absolute top-full left-0 w-48 bg-white shadow-lg rounded-b-lg z-10">
+                  <Link to="/section1" className="block py-2 px-4 hover:bg-[#aec6fa] font-mukta">{t.section1}</Link>
+                  <Link to="/section2" className="block py-2 px-4 hover:bg-[#aec6fa] font-mukta">{t.section2}</Link>
+                  <Link to="/section3" className="block py-2 px-4 hover:bg-[#aec6fa] font-mukta">{t.section3}</Link>
+                </div>
+              </li>
             </ul>
 
             <div className="flex items-center py-2 sm:py-0 ml-auto sm:ml-0">

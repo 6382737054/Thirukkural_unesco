@@ -7,6 +7,9 @@ import HomePage from './Pages/HomePage';
 import About from './Pages/About';
 import ThirukkuralSectionsPage from './Pages/ThirukkuralSections';
 import Repositories from './Pages/Repositories';
+import Aram from './Pages/Aram';
+import Porul from './Pages/Porul';
+import Inbam from './Pages/Inbam';
 
 const AppRoutes = () => {
   const location = useLocation();
@@ -20,6 +23,9 @@ const AppRoutes = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<About />} />
           <Route path="/repositories" element={<Repositories />} />
+          <Route path="/section1" element={<Aram />} />
+          <Route path="/section2" element={<Porul />} />
+          <Route path="/section3" element={<Inbam />} />
         </Routes>
 
         {location.pathname === '/' && <ThirukkuralSectionsPage />}
