@@ -6,9 +6,10 @@ import Footer from './Components/Footer';
 import HomePage from './Pages/HomePage';
 import About from './Pages/About';
 import ThirukkuralSectionsPage from './Pages/ThirukkuralSections';
+import Repositories from './Pages/Repositories';
 
 const AppRoutes = () => {
-  const location = useLocation(); // Get the current location
+  const location = useLocation();
 
   return (
     <div className="App flex flex-col min-h-screen">
@@ -18,9 +19,9 @@ const AppRoutes = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<About />} />
+          <Route path="/repositories" element={<Repositories />} />
         </Routes>
 
-        {/* Render ThirukkuralSectionsPage only on the home page */}
         {location.pathname === '/' && <ThirukkuralSectionsPage />}
       </main>
 

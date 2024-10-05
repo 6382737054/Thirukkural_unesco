@@ -8,7 +8,6 @@ const Navbar = () => {
   const [currentDateTime, setCurrentDateTime] = useState('');
   const { language, toggleLanguage } = useLanguage();
   
-  // Get the current pathname
   const location = useLocation();
   
   const content = {
@@ -16,7 +15,7 @@ const Navbar = () => {
       marqueeText: 'Welcome to the Tamil Virtual Academy - Your digital library for Tamil literature and culture!',
       home: 'Home',
       about: 'About',
-      services: 'Services',
+      repositories: 'Repositories',
       contact: 'Contact',
       title: "Thiruvalluvar's Tirukkural: Manuscripts Repository",
       subtitle: (<span>3<sup>rd</sup> - 1<sup>st</sup> Century BCE</span>),
@@ -29,7 +28,7 @@ const Navbar = () => {
       marqueeText: 'தமிழிணையம் - தமிழ்ப் புத்தகங்கள் மற்றும் கலாச்சாரத்திற்கு உங்களை வரவேற்கிறேன்!',
       home: 'முகப்பு',
       about: 'எங்களைப் பற்றி',
-      services: 'சேவைகள்',
+      repositories: 'களஞ்சியங்கள்',
       contact: 'தொடர்பு',
       title: 'திருக்குறள்- கையெழுத்துப் பிரதிகள் களஞ்சியம்',
       subtitle: (<span>கிமு 3<sup>வது</sup> - 1<sup>வது</sup> ஆம் நூற்றாண்டு</span>),
@@ -42,7 +41,6 @@ const Navbar = () => {
 
   const t = content[language];
 
-  // Handle language toggle with localStorage
   const handleLanguageToggle = () => {
     const newLanguage = language === 'en' ? 'ta' : 'en';
     localStorage.setItem('preferredLanguage', newLanguage);
@@ -64,7 +62,6 @@ const Navbar = () => {
     return () => clearInterval(interval);
   }, [language]);
 
-  // Initialize language from localStorage on component mount
   useEffect(() => {
     const savedLanguage = localStorage.getItem('preferredLanguage');
     if (savedLanguage && savedLanguage !== language) {
@@ -74,7 +71,6 @@ const Navbar = () => {
 
   return (
     <header className="w-full">
-      {/* Top Navbar */}
       <div className="bg-[#30699c] py-1 px-4 flex flex-col sm:flex-row justify-between items-center text-white text-xs sm:text-sm border-b border-[#4d82b1]">
         <div className="w-full sm:w-1/2 overflow-hidden mb-1 sm:mb-0">
           <marquee className="whitespace-nowrap font-mukta">{t.marqueeText}</marquee>
@@ -86,7 +82,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Middle Navbar */}
       <div className="bg-[#30699c] text-white">
         <div className="container mx-auto px-4 py-4">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
@@ -111,7 +106,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Bottom Navbar */}
       <nav className="bg-white text-black">
         <div className="container mx-auto px-4">
           <div className="flex justify-center items-center py-2">
@@ -125,7 +119,7 @@ const Navbar = () => {
               {[
                 { to: "/", label: t.home },
                 { to: "/about", label: t.about },
-                { to: "/services", label: t.services },
+                { to: "/repositories", label: t.repositories },
                 { to: "/contact", label: t.contact },
               ].map((item, index) => (
                 <li key={index}>
