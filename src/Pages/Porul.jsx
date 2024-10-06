@@ -44,7 +44,9 @@ const Porul = () => {
         "A just king is the pillar of his people's prosperity. - Kural 542",
         "Morality is the cornerstone of material prosperity. - Kural 501"
       ],
-      conclusion: "Porul offers invaluable insights into the art of governance, economic management, and social organization, providing a comprehensive guide for leaders and citizens alike in building a prosperous and just society."
+      additionalWisdomTitle: "Additional Wisdom", // Added translation
+      conclusion: "Porul offers invaluable insights into the art of governance, economic management, and social organization, providing a comprehensive guide for leaders and citizens alike in building a prosperous and just society.",
+      conclusionTitle: "Conclusion" // Added translation
     },
     ta: {
       title: "பொருள்",
@@ -82,7 +84,9 @@ const Porul = () => {
         "நீதியான அரசன் தன் மக்களின் செழிப்பின் தூணாக இருக்கிறான். - குறள் 542",
         "நெறிமுறை பொருள் செழிப்பின் அடித்தளமாகும். - குறள் 501"
       ],
-      conclusion: "பொருள் ஆட்சிக் கலை, பொருளாதார மேலாண்மை மற்றும் சமூக அமைப்பு பற்றிய மதிப்புமிக்க நுண்ணறிவுகளை வழங்குகிறது, செழிப்பான மற்றும் நீதியான சமூகத்தை உருவாக்குவதில் தலைவர்கள் மற்றும் குடிமக்களுக்கு விரிவான வழிகாட்டியை வழங்குகிறது."
+      additionalWisdomTitle: "கூடுதல் ஞானம்", // Added translation
+      conclusion: "பொருள் ஆட்சிக் கலை, பொருளாதார மேலாண்மை மற்றும் சமூக அமைப்பு பற்றிய மதிப்புமிக்க நுண்ணறிவுகளை வழங்குகிறது, செழிப்பான மற்றும் நீதியான சமூகத்தை உருவாக்குவதில் தலைவர்கள் மற்றும் குடிமக்களுக்கு விரிவான வழிகாட்டியை வழங்குகிறது.",
+      conclusionTitle: "முடிவு" // Added translation
     }
   };
 
@@ -146,26 +150,17 @@ const Porul = () => {
         </animated.blockquote>
 
         <div className="text-center mb-12 bg-white rounded-lg shadow-lg p-8">
-          <h3 className="text-2xl font-semibold mb-6 text-blue-700">Additional Wisdom</h3>
+          <h3 className="text-2xl font-semibold mb-6 text-blue-700">{t.additionalWisdomTitle}</h3>
           {t.additionalQuotes.map((quote, index) => (
-            <animated.p
-              key={index}
-              style={additionalQuoteSpring}
-              className="text-lg italic mb-4 text-gray-700"
-            >
+            <animated.p key={index} style={additionalQuoteSpring} className="text-lg mb-4 text-gray-600">
               "{quote}"
             </animated.p>
           ))}
         </div>
 
-        <animated.div
-          style={conclusionSpring}
-          className="bg-green-200 rounded-lg shadow-lg p-8"
-        >
-          <h3 className="text-2xl font-semibold mb-4 text-green-800 text-center">Conclusion</h3>
-          <p className="text-xl text-center max-w-3xl mx-auto text-gray-700">
-            {t.conclusion}
-          </p>
+        <animated.div style={conclusionSpring} className="text-center mt-12">
+          <h3 className="text-2xl font-semibold mb-4 text-blue-700">{t.conclusionTitle}</h3>
+          <p className="text-lg text-gray-600">{t.conclusion}</p>
         </animated.div>
       </div>
     </animated.div>

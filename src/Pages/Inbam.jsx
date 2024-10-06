@@ -44,6 +44,8 @@ const Inbam = () => {
         "The ignorant say love belongs to those in life, but it truly belongs to those who have died to themselves. - Kural 72",
         "Love is a tender act within and a gentle word without. - Kural 92"
       ],
+      additionalWisdom: "Additional Wisdom",
+      conclusionTitle: "Conclusion",
       conclusion: "Inbam offers profound insights into the nature of love and human relationships, reminding us of the central role that love plays in personal happiness, social harmony, and the human experience as a whole."
     },
     ta: {
@@ -82,6 +84,8 @@ const Inbam = () => {
         "அறிவற்றவர் காதல் உயிருடன் இருப்பவர்களுக்கு உரியது என்கின்றனர், ஆனால் அது உண்மையில் தங்களுக்காக இறந்தவர்களுக்கு உரியது. - குறள் 72",
         "காதல் என்பது உள்ளே ஒரு மென்மையான செயலும், வெளியே ஒரு மென்மையான சொல்லும் ஆகும். - குறள் 92"
       ],
+      additionalWisdom: "கூடுதல் அறிவு",
+      conclusionTitle: "முடிவு",
       conclusion: "இன்பம் அன்பு மற்றும் மனித உறவுகளின் இயல்பைப் பற்றிய ஆழமான நுண்ணறிவுகளை வழங்குகிறது, தனிப்பட்ட மகிழ்ச்சி, சமூக நல்லிணக்கம் மற்றும் மனித அனுபவம் முழுவதிலும் அன்பு வகிக்கும் மையப் பங்கை நமக்கு நினைவூட்டுகிறது."
     }
   };
@@ -146,26 +150,21 @@ const Inbam = () => {
         </animated.blockquote>
 
         <div className="text-center mb-12 bg-white rounded-lg shadow-lg p-8">
-          <h3 className="text-2xl font-semibold mb-6 text-purple-700">Additional Wisdom</h3>
+          <h3 className="text-2xl font-semibold mb-6 text-purple-700">{t.additionalWisdom}</h3>
           {t.additionalQuotes.map((quote, index) => (
             <animated.p
               key={index}
               style={additionalQuoteSpring}
-              className="text-lg italic mb-4 text-gray-700"
+              className="text-lg italic mb-2 text-gray-700"
             >
               "{quote}"
             </animated.p>
           ))}
         </div>
 
-        <animated.div
-          style={conclusionSpring}
-          className="bg-pink-200 rounded-lg shadow-lg p-8"
-        >
-          <h3 className="text-2xl font-semibold mb-4 text-pink-800 text-center">Conclusion</h3>
-          <p className="text-xl text-center max-w-3xl mx-auto text-gray-700">
-            {t.conclusion}
-          </p>
+        <animated.div style={conclusionSpring} className="bg-white shadow-lg rounded-lg p-8">
+          <h3 className="text-2xl font-semibold mb-4 text-purple-700">{t.conclusionTitle}</h3>
+          <p className="text-gray-600">{t.conclusion}</p>
         </animated.div>
       </div>
     </animated.div>

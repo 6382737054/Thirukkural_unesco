@@ -16,7 +16,7 @@ const Repositories = () => {
     }
   }, [controls, inView]);
 
-  const { language } = useLanguage(); // Add this line to get the selected language
+  const { language } = useLanguage();
 
   const content = {
     en: {
@@ -76,6 +76,8 @@ const Repositories = () => {
           description: 'Sophisticated monitoring systems track environmental parameters and detect any anomalies, allowing for prompt corrective actions.',
         },
       ],
+      visitWebsite: 'Visit Website',
+      featuresTitle: 'Features',
     },
     ta: {
       title: 'திருக்குறள் பதிவுகள் தமிழ்நாட்டில்',
@@ -134,6 +136,8 @@ const Repositories = () => {
           description: 'தரவைச் சுத்தமாக பராமரிக்கவும், எந்தவொரு பிரச்சனையும் முந்தைய நிலைமைகளை கண்டறிந்து தீர்க்கும் திறமையான கண்காணிப்பு அமைப்புகள்.',
         },
       ],
+      visitWebsite: 'விண்ணப்பதாரரைச் செல்லவும்',
+      featuresTitle: 'அம்சங்கள்',
     },
   };
 
@@ -175,7 +179,7 @@ const Repositories = () => {
                   rel="noopener noreferrer"
                   className="mt-4 inline-block px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 transition-colors duration-300"
                 >
-                  Visit Website
+                  {content[language].visitWebsite}
                 </a>
               </div>
             </a>
@@ -185,11 +189,11 @@ const Repositories = () => {
 
       {/* Features Section */}
       <section className="mt-10 p-5 bg-white rounded-lg shadow-md">
-        <h3 className="text-2xl font-bold text-center mb-4">Features</h3>
+        <h3 className="text-2xl font-bold text-center mb-4">{content[language].featuresTitle}</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {content[language].features.map((feature, index) => (
-            <div key={index} className="p-4 border rounded-lg shadow hover:shadow-lg transition-shadow duration-300">
-              <h4 className="text-xl font-semibold">{feature.title}</h4>
+          {content[language].features.map((feature) => (
+            <div key={feature.title} className="bg-blue-50 rounded-lg p-4 shadow">
+              <h4 className="text-lg font-semibold">{feature.title}</h4>
               <p className="text-gray-600">{feature.description}</p>
             </div>
           ))}

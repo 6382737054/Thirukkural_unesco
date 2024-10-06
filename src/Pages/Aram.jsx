@@ -44,12 +44,14 @@ const Aram = () => {
         "The best among us are those who are virtuous in their conduct. - Kural 481",
         "A person's true wealth is their character and virtue. - Kural 960"
       ],
+      additionalWisdomTitle: "Additional Wisdom",
+      conclusionTitle: "Conclusion",
       conclusion: "Aram serves as a timeless guide for ethical living, offering profound insights that resonate across cultures and generations."
     },
     ta: {
       title: "அறம்",
       subtitle: "நெறிமுறை வாழ்க்கையின் அடித்தளம்",
-      description: "திருவள்ளுவரின் திருக்குறளின் முதல் பிரிவான அறம், நெறிமுறை வாழ்க்கை மற்றும் ஒழுக்க மேன்மைக்கான விரிவான வழிகாட்டியாகும். இது தனிப்பட்ட நேர்மை மற்றும் சமூக நல்லிணக்கத்தின் அடித்தளமாக அமைகிறது.",
+      description: "திருவள்ளுவரின் திருக்குறளின் முதல் பிரிவான அறம், நெறிமுறை வாழ்க்கை மற்றும் ஒழுக்க மேன்மைக்கான விரிவான வழிகாட்டியாகும். இது தனிப்பட்ட நேர்மை மற்றும் சமூக நல்லிணக்கத்தின் அடித்தளம் ஆக அமைகிறது.",
       sections: [
         {
           title: "இல்லற அறம்",
@@ -82,6 +84,8 @@ const Aram = () => {
         "நல்லது நடக்கும் நம்மோடு நடக்கும். - குறள் 481",
         "ஒருவரின் உண்மையான செல்வம் அவரது ஒழுக்கமும் அறமும். - குறள் 960"
       ],
+      additionalWisdomTitle: "மேலும் ஞானம்",
+      conclusionTitle: "முடிவு",
       conclusion: "அறம் நெறிமுறை வாழ்க்கைக்கான காலத்தால் அழியாத வழிகாட்டியாக செயல்படுகிறது, கலாச்சாரங்கள் மற்றும் தலைமுறைகளைக் கடந்து எதிரொலிக்கும் ஆழமான உள்ளுணர்வுகளை வழங்குகிறது."
     }
   };
@@ -93,6 +97,10 @@ const Aram = () => {
     transform: 'translateY(0)',
     from: { opacity: 0, transform: 'translateY(50px)' },
     delay: 300,
+    reset: true,
+    config: config.molasses,
+    // Add language as a dependency
+    onRest: () => {} // Forces a new animation render on language change
   });
 
   const blockquoteSpring = useSpring({
@@ -100,12 +108,9 @@ const Aram = () => {
     transform: 'scale(1)',
     from: { opacity: 0, transform: 'scale(0.8)' },
     delay: 1200,
-  });
-
-  const conclusionSpring = useSpring({
-    opacity: 1,
-    from: { opacity: 0 },
-    delay: 1500,
+    reset: true,
+    config: config.molasses,
+    onRest: () => {},
   });
 
   const additionalQuoteSpring = useSpring({
@@ -113,6 +118,18 @@ const Aram = () => {
     transform: 'translateX(0)',
     from: { opacity: 0, transform: 'translateX(-50px)' },
     delay: 1800,
+    reset: true,
+    config: config.molasses,
+    onRest: () => {}
+  });
+
+  const conclusionSpring = useSpring({
+    opacity: 1,
+    from: { opacity: 0 },
+    delay: 1500,
+    reset: true,
+    config: config.molasses,
+    onRest: () => {}
   });
 
   return (
@@ -140,33 +157,26 @@ const Aram = () => {
 
         <animated.blockquote
           style={blockquoteSpring}
-          className="text-2xl italic text-center mb-12 px-8 py-4 border-l-4 border-orange-500 bg-orange-100 rounded-lg shadow-md"
+          className="text-center italic text-2xl font-semibold text-orange-600 max-w-3xl mx-auto"
         >
-          "{t.quote}"
+          {t.quote}
         </animated.blockquote>
 
-        <div className="text-center mb-12 bg-white rounded-lg shadow-lg p-8">
-          <h3 className="text-2xl font-semibold mb-6 text-orange-700">Additional Wisdom</h3>
-          {t.additionalQuotes.map((quote, index) => (
-            <animated.p
-              key={index}
-              style={additionalQuoteSpring}
-              className="text-lg italic mb-4 text-gray-700"
-            >
-              "{quote}"
-            </animated.p>
-          ))}
-        </div>
+        <div className="mt-16 max-w-4xl mx-auto">
+          <h3 className="text-3xl font-semibold text-orange-700 mb-6 text-center">{t.additionalWisdomTitle}</h3>
+          <animated.div style={additionalQuoteSpring} className="space-y-6 text-center">
+            {t.additionalQuotes.map((quote, index) => (
+              <p key={index} className="text-xl text-gray-700">
+                "{quote}"
+              </p>
+            ))}
+          </animated.div>
 
-        <animated.div
-          style={conclusionSpring}
-          className="bg-orange-200 rounded-lg shadow-lg p-8"
-        >
-          <h3 className="text-2xl font-semibold mb-4 text-orange-800 text-center">Conclusion</h3>
-          <p className="text-xl text-center max-w-3xl mx-auto text-gray-700">
-            {t.conclusion}
-          </p>
-        </animated.div>
+          <animated.div style={conclusionSpring}>
+            <h3 className="text-3xl font-semibold text-orange-700 mb-6 mt-12 text-center">{t.conclusionTitle}</h3>
+            <p className="text-xl text-gray-700 text-center">{t.conclusion}</p>
+          </animated.div>
+        </div>
       </div>
     </animated.div>
   );
