@@ -10,10 +10,11 @@ import Repositories from './Pages/Repositories';
 import Aram from './Pages/Aram';
 import Porul from './Pages/Porul';
 import Inbam from './Pages/Inbam';
+import Features from './Pages/Features';
 
 const AppRoutes = () => {
   const location = useLocation();
-
+  
   return (
     <div className="App flex flex-col min-h-screen">
       <Navbar />
@@ -23,20 +24,19 @@ const AppRoutes = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<About />} />
           <Route path="/repositories" element={<Repositories />} />
-          {/* Existing routes */}
           <Route path="/section1" element={<Aram />} />
           <Route path="/section2" element={<Porul />} />
           <Route path="/section3" element={<Inbam />} />
-          {/* New routes */}
           <Route path="/aram" element={<Aram />} />
           <Route path="/porul" element={<Porul />} />
           <Route path="/inbam" element={<Inbam />} />
           <Route path="/sections" element={<ThirukkuralSectionsPage />} />
+          <Route path="/features" element={<Features />} />
         </Routes>
-
+        
         {location.pathname === '/' && <ThirukkuralSectionsPage />}
       </main>
-
+      
       <Footer />
     </div>
   );

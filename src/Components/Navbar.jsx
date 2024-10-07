@@ -5,7 +5,7 @@ import { Menu, ChevronDown } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isSectionsOpen, setIsSectionsOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [currentDateTime, setCurrentDateTime] = useState('');
   const { language, toggleLanguage } = useLanguage();
 
@@ -17,7 +17,7 @@ const Navbar = () => {
       home: 'Home',
       about: 'About',
       repositories: 'Repositories',
-      contact: 'Contact',
+      contact: 'Features', // Changed from 'Contact' to 'Features'
       title: "Thiruvalluvar's Tirukkural: Manuscripts Repository",
       subtitle: (<span>3<sup>rd</sup> - 1<sup>st</sup> Century BCE</span>),
       email: 'Email:',
@@ -34,7 +34,7 @@ const Navbar = () => {
       home: 'முகப்பு',
       about: 'எங்களைப் பற்றி',
       repositories: 'களஞ்சியங்கள்',
-      contact: 'தொடர்பு',
+      contact: 'விருப்பங்கள்', // Changed from 'Contact' to 'Features'
       title: 'திருக்குறள்- கையெழுத்துப் பிரதிகள் களஞ்சியம்',
       subtitle: (<span>கிமு 3<sup>வது</sup> - 1<sup>வது</sup> ஆம் நூற்றாண்டு</span>),
       email: 'மின்னஞ்சல்:',
@@ -125,12 +125,7 @@ const Navbar = () => {
               <Menu size={24} />
             </button>
             <ul className={`${isOpen ? 'flex' : 'hidden'} sm:flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-4 text-sm`}>
-              {[
-                { to: "/", label: t.home },
-                { to: "/about", label: t.about },
-                { to: "/repositories", label: t.repositories },
-                { to: "/contact", label: t.contact },
-              ].map((item, index) => (
+              {[{ to: "/", label: t.home }, { to: "/about", label: t.about }, { to: "/repositories", label: t.repositories }, { to: "/contact", label: t.contact }].map((item, index) => (
                 <li key={index}>
                   <Link 
                     to={item.to} 
@@ -141,17 +136,20 @@ const Navbar = () => {
                   </Link>
                 </li>
               ))}
-              <li className="relative group">
-                <button
-                  className="flex items-center py-2 px-4 hover:bg-[#aec6fa] text-center sm:text-left font-mukta"
+              <li className="relative">
+                <div
+                  className="flex items-center py-2 px-4 hover:bg-[#aec6fa] text-center sm:text-left font-mukta cursor-pointer"
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 >
                   {t.sections} <ChevronDown size={16} className="ml-1" />
-                </button>
-                <div className="hidden group-hover:block absolute top-full left-0 w-48 bg-white shadow-lg rounded-b-lg z-10">
-                  <Link to="/section1" className="block py-2 px-4 hover:bg-[#aec6fa] font-mukta">{t.section1}</Link>
-                  <Link to="/section2" className="block py-2 px-4 hover:bg-[#aec6fa] font-mukta">{t.section2}</Link>
-                  <Link to="/section3" className="block py-2 px-4 hover:bg-[#aec6fa] font-mukta">{t.section3}</Link>
                 </div>
+                {isDropdownOpen && (
+                  <div className="absolute top-10 left-0 sm:left-auto w-full sm:w-48 bg-white shadow-lg rounded-b-lg z-10">
+                    <Link to="/section1" className="block py-2 px-4 hover:bg-[#aec6fa] font-mukta" onClick={() => setIsDropdownOpen(false)}>{t.section1}</Link>
+                    <Link to="/section2" className="block py-2 px-4 hover:bg-[#aec6fa] font-mukta" onClick={() => setIsDropdownOpen(false)}>{t.section2}</Link>
+                    <Link to="/section3" className="block py-2 px-4 hover:bg-[#aec6fa] font-mukta" onClick={() => setIsDropdownOpen(false)}>{t.section3}</Link>
+                  </div>
+                )}
               </li>
             </ul>
 
@@ -175,6 +173,6 @@ const Navbar = () => {
       </nav>
     </header>
   );
-};
+};  
 
 export default Navbar;
