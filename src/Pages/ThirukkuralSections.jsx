@@ -2,9 +2,11 @@ import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { motion } from 'framer-motion';
 import { BookOpen, Heart, Coins, Info } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const ThirukkuralSectionsPage = () => {
   const { language } = useLanguage();
+  const navigate = useNavigate();
 
   const content = {
     en: {
@@ -17,21 +19,24 @@ const ThirukkuralSectionsPage = () => {
             icon: <BookOpen className="w-12 h-12 text-green-600" />,
             description: "This section deals with moral values and righteous living. It covers topics such as domestic life, ascetic virtue, fate, and more.",
             couplets: "Contains 380 couplets across 38 chapters.",
-            keyTopics: ["Personal Integrity", "Family Life", "Social Responsibility", "Ethical Conduct"]
+            keyTopics: ["Personal Integrity", "Family Life", "Social Responsibility", "Ethical Conduct"],
+            route: "/aram"
           },
           {
             title: "Porul (Wealth)",
             icon: <Coins className="w-12 h-12 text-yellow-600" />,
             description: "This section focuses on political and economic matters. It discusses kingship, ministers, country, fort, army, friendship, and more.",
             couplets: "Comprises 700 couplets in 70 chapters.",
-            keyTopics: ["Governance", "Economic Prosperity", "Diplomacy", "Military Strategy"]
+            keyTopics: ["Governance", "Economic Prosperity", "Diplomacy", "Military Strategy"],
+            route: "/porul"
           },
           {
             title: "Inbam (Love)",
             icon: <Heart className="w-12 h-12 text-red-600" />,
             description: "This section explores the theme of love and relationships. It delves into mental union, enjoyment of love, and the pain of separation.",
             couplets: "Consists of 250 couplets in 25 chapters.",
-            keyTopics: ["Romantic Love", "Marital Harmony", "Emotional Intelligence", "Human Connection"]
+            keyTopics: ["Romantic Love", "Marital Harmony", "Emotional Intelligence", "Human Connection"],
+            route: "/inbam"
           }
         ],
         historicalContext: "Thirukkural, believed to have been written between the 3rd and 1st centuries BCE, has played a significant role in shaping Tamil literature and culture. Its universal messages have earned it the moniker 'Ulaga Podhu Marai' (Universal Scripture).",
@@ -49,21 +54,24 @@ const ThirukkuralSectionsPage = () => {
             icon: <BookOpen className="w-12 h-12 text-green-600" />,
             description: "இந்தப் பிரிவு அறநெறி மற்றும் நேர்மையான வாழ்க்கையைப் பற்றி பேசுகிறது. இது வீட்டு வாழ்க்கை, துறவற நெறி, விதி போன்ற தலைப்புகளை உள்ளடக்கியது.",
             couplets: "38 அதிகாரங்களில் 380 குறட்பாக்களைக் கொண்டுள்ளது.",
-            keyTopics: ["தனிப்பட்ட நேர்மை", "குடும்ப வாழ்க்கை", "சமூகப் பொறுப்பு", "நெறிமுறை நடத்தை"]
+            keyTopics: ["தனிப்பட்ட நேர்மை", "குடும்ப வாழ்க்கை", "சமூகப் பொறுப்பு", "நெறிமுறை நடத்தை"],
+            route: "/aram"
           },
           {
             title: "பொருள்",
             icon: <Coins className="w-12 h-12 text-yellow-600" />,
             description: "இந்தப் பிரிவு அரசியல் மற்றும் பொருளாதார விவகாரங்களை மையமாகக் கொண்டுள்ளது. இது அரசாட்சி, அமைச்சர்கள், நாடு, கோட்டை, படை, நட்பு போன்றவற்றை விவாதிக்கிறது.",
             couplets: "70 அதிகாரங்களில் 700 குறட்பாக்களைக் கொண்டுள்ளது.",
-            keyTopics: ["ஆட்சி", "பொருளாதார செழிப்பு", "இராஜதந்திரம்", "இராணுவ தந்திரம்"]
+            keyTopics: ["ஆட்சி", "பொருளாதார செழிப்பு", "இராஜதந்திரம்", "இராணுவ தந்திரம்"],
+            route: "/porul"
           },
           {
             title: "இன்பம்",
             icon: <Heart className="w-12 h-12 text-red-600" />,
             description: "இந்தப் பிரிவு அன்பு மற்றும் உறவுகளைப் பற்றி ஆராய்கிறது. இது மன ஒருமைப்பாடு, காதல் இன்பம், மற்றும் பிரிவின் வலி ஆகியவற்றை ஆழமாக ஆராய்கிறது.",
             couplets: "25 அதிகாரங்களில் 250 குறட்பாக்களைக் கொண்டுள்ளது.",
-            keyTopics: ["காதல்", "திருமண இணக்கம்", "உணர்ச்சி நுண்ணறிவு", "மனித உறவுகள்"]
+            keyTopics: ["காதல்", "திருமண இணக்கம்", "உணர்ச்சி நுண்ணறிவு", "மனித உறவுகள்"],
+            route: "/inbam"
           }
         ],
         historicalContext: "கி.மு. 3 முதல் 1 ஆம் நூற்றாண்டுகளுக்கு இடையில் எழுதப்பட்டதாக நம்பப்படும் திருக்குறள், தமிழ் இலக்கியம் மற்றும் கலாச்சாரத்தை வடிவமைப்பதில் முக்கிய பங்கு வகித்துள்ளது. இதன் உலகளாவிய செய்திகள் இதற்கு 'உலகப் பொதுமறை' என்ற பெயரைப் பெற்றுத் தந்துள்ளன.",
@@ -94,6 +102,10 @@ const ThirukkuralSectionsPage = () => {
       y: 0,
       transition: { duration: 0.5 }
     }
+  };
+
+  const handleExplore = (route) => {
+    navigate(route);
   };
 
   return (
@@ -138,6 +150,7 @@ const ThirukkuralSectionsPage = () => {
                 className="mt-4 w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-colors duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => handleExplore(section.route)}
               >
                 {t.learnMore}
               </motion.button>
